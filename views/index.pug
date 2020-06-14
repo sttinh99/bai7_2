@@ -19,6 +19,6 @@ table
           td=book.title
           td=book.description
           td
-            a(href="books/"+ book.id +"/update") Update
+            a(href="/books/"+book.id+"/update") Update
           td
-            a(href="#") Remove
+            a(href="/books/"+book.id+"/delete") Remove

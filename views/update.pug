@@ -1,7 +1,7 @@
-form(action='/books', method="GET")
+form(action='/books/update', method="post")
       label Update Title...........
-      input(name="title",type="text")
-      book.title = input.value()
+      input(name="title",type="text", value=book.title)
+      input(name="id",type="text",value=book.id, style="display:none")
       br
       br
       button Update
