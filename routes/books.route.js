@@ -6,12 +6,12 @@ var router = express.Router();
 
 
 router.get("/", function(req, res) {
-    res.render("./index", {
+    res.render("./books/index", {
       books: db.get("books").value()
     });
   });
   router.get("/create", function(req, res) {
-    res.render("./create");
+    res.render("./books/create");
   });
   router.post("/create", function(req, res) {
     req.body.id = shortid.generate();
@@ -23,7 +23,7 @@ router.get("/", function(req, res) {
   router.get("/:id/update",function(req,res){
     var id = req.params.id;
     var book = db.get("books").find({id: id}).value();
-    res.render("./update",{book: book});
+    res.render("./books/update",{book: book});
     // router.post("/update",function(req,res){
     //   var x = req.body.title;
     //   book.title = x;
@@ -50,9 +50,7 @@ router.get("/", function(req, res) {
             db.get('books').write()
         }
     });
-    res.render('./delete',{
-        book: book
-    })
+    res.redirect("/books")
   });
 
 module.exports = router;

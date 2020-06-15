@@ -6,12 +6,12 @@ var router = express.Router();
 
 
 router.get("/", function(req, res) {
-    res.render("./indexUser", {
+    res.render("./users/indexUser", {
       users: db.get("users").value()
     });
   });
   router.get("/create", function(req, res) {
-    res.render("./createUser");
+    res.render("./users/createUser");
   });
   router.post("/create", function(req, res) {
     req.body.id = shortid.generate();
@@ -23,7 +23,7 @@ router.get("/", function(req, res) {
   router.get("/:id/update",function(req,res){
     var id = req.params.id;
     var user = db.get("users").find({id: id}).value();
-    res.render("./updateUser",{user: user});
+    res.render("./users/updateUser",{user: user});
     // router.post("/update",function(req,res){
     //   var x = req.body.title;
     //   book.title = x;
@@ -50,9 +50,7 @@ router.get("/", function(req, res) {
             db.get('users').write()
         }
     });
-    res.render('./deleteUser',{
-        user: user
-    })
+    res.redirect('/users');
   });
 
 module.exports = router;

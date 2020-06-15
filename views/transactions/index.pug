@@ -1,0 +1,18 @@
+h1 Transactions
+a(href="/transactions/create") New
+style.
+  th,td{
+  border: 1px soild black;
+  text-align:center;
+  }
+  table{
+    width: 500px;
+  }
+table
+      tr
+        th Name
+        th Book  
+      each tran in trans   
+        tr
+          td=tran.user
+          td=tran.book
